@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercal use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Stellar by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, inital-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
+		<script src="plotly-2.4.2.min.js"></script>
+		<script src="plot_test.js"></script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>Toolbox</h1>
+						<p>Some helpful tools for planetary science. More to come!</p>
+						<p><a href="index.html">Back to Main Page</a></p>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+							<section id="content" class="main">
+								<!-- <span class="image main"><img src="images/pic04.jpg" alt="" /></span> -->
+								<h2>Orbital Period Calculator</h2>
+								<script>
+									function calculate() {
+									var c = new Number();
+									var a,b,m,u,ua,ia,ib,ic,oa;
+									ia=parseFloat(document.calculator.ia.value);
+									u=document.calculator.uia.options[document.calculator.uia.selectedIndex].value;
+									ua=u.split(":",3);
+									m=parseFloat(ua[0]);
+									b=parseFloat(ua[1]);a=parseFloat(ua[2]);
+									if(m == 0 && a == 0 && b == 0) { return false; };
+									ia=Math.pow(((ia-a)/m),(1/b));
+									ib=parseFloat(document.calculator.ib.value);u=document.calculator.uib.options[document.calculator.uib.selectedIndex].value;ua=u.split(":",3);m=parseFloat(ua[0]);b=parseFloat(ua[1]);a=parseFloat(ua[2]);if(m == 0 && a == 0 && b == 0) { return false; };ib=Math.pow(((ib-a)/m),(1/b));
+									ic=parseFloat(document.calculator.ic.value);u=document.calculator.uic.options[document.calculator.uic.selectedIndex].value;ua=u.split(":",3);m=parseFloat(ua[0]);b=parseFloat(ua[1]);a=parseFloat(ua[2]);if(m == 0 && a == 0 && b == 0) { return false; };ic=Math.pow(((ic-a)/m),(1/b));
+
+									oa = Math.sqrt(4*Math.PI*Math.PI*Math.pow(ia,3)/((6.67428e-11)*(ib+ic)));
+									u=document.calculator.uoa.options[document.calculator.uoa.selectedIndex].value;ua=u.split(":",3);m=parseFloat(ua[0]);b=parseFloat(ua[1]);a=parseFloat(ua[2]);if(m == 0 && a == 0 && b == 0) { return false; };oa=Math.pow(oa,b)*m+a;
+									if(oa.toPrecision) { oa=oa.toPrecision(6); } document.calculator.oa.value = oa;
+									return false;
+									}
+								</script>
+								<form onsubmit="return calculate()" name="calculator" action="">
+								<div class="table-wrapper">
+									<table>
+										<tbody>
+											<tr>
+												<td>Semi-Major Axis</td>
+												<td><input type="text" name="ia" value="" placeholder="Semi-major Axis" /></td>
+												<td><select name="uia" onchange="calculate();" class="infield">
+													<option value="6.684587123e-12:1:0" selected="selected">au</option>
+													<option value="1.057000834e-16:1:0" >light-years</option>
+													<option value="3.240755744e-17:1:0" >parsecs</option>
+													<option value="1:1:0" >m</option> 
+													<option value="0.001:1:0" >km</option>
+													<option value="3.280839895:1:0" >feet</option>
+													<option value="1.093613298:1:0" >yards</option>
+													<option value="0.000621371192:1:0" >miles</option>
+													</select></td>
+											</tr>
+											<tr>
+												<td>Mass of Star</td>
+												<td><input type="text" name="ib" value="" placeholder="Mass of Star" /></td>
+												<td><select name="uib" onchange="calculate();">
+													<option value="1000:1:0" >grams</option>
+													<option value="1:1:0" >kg</option>
+													<option value="1.36097e-23:1:0" >Moon Masses</option>
+													<option value="1.6740324e-25:1:0" selected="selected">Earth Masses</option>
+													<option value="5.027399e-31:1:0" >Solar Masses</option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td>Mass of Planet</td>
+												<td><input type="text" name="ic" value="" placeholder="Mass of Planet" class="col-4 col-12-xsmall"/></td>
+												<td><select name="uic" onchange="calculate();" class="col-4 col-12-xsmall">
+													<option value="1000:1:0" >grams</option>
+													<option value="1:1:0" >kg</option>
+													<option value="1.36097e-23:1:0" >Moon Masses</option>
+													<option value="1.6740324e-25:1:0" selected="selected">Earth Masses</option>
+													<option value="5.027399e-31:1:0" >Solar Masses</option>
+												</select></td>
+											</tr>
+											<tr>
+												<td><input type="button"  name="go" value="Calculate Orbital Period" onclick="return calculate()" class="calculate" /></td>
+												<td><input type="text" name="oa" value="" placeholder="Orbital Period" /></td>
+												<td>
+													<select name="uoa" onchange="calculate();" class="outfield"><option value="1:1:0" >s</option>
+													<option value="1e+15:1:0" >fs</option>
+													<option value="1000000000000:1:0" >ps</option>
+													<option value="1000000000:1:0" >ns</option>
+													<option value="1000000:1:0" >&micro;s</option>
+													<option value="1000:1:0" >ms</option>
+													<option value="0.016666666666667:1:0" >minutes</option>
+													<option value="0.0002777777777778:1:0" >hours</option>
+													<option value="1.15740740740741e-05:1:0" >days</option>
+													<option value="1.6534391534e-06:1:0" >weeks</option>
+													<option value="3.9194290803e-07:1:0" >months (lunar)</option>
+													<option value="3.8580246914e-07:1:0" >months (30d)</option>
+													<option value="1.2675014316e-07:1:0" >quarters</option>
+													<option value="3.168753579e-08:1:0" selected="selected">years</option>
+													<option value="3.168753579e-09:1:0" >decades</option>
+													<option value="3.168753579e-10:1:0" >centuries</option>
+													<option value="3.168753579e-11:1:0" >millena</option>
+													<option value="8.267195767e-07:1:0" >fortnight</option>
+												   </select></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<p></p>
+								<h2>Orbital Plotter</h2>
+								<p></p>
+								<form onsubmit="return plot_orbits()" name="plotter" action="">
+									<div class="table-wrapper">
+										<table>
+											<tbody>
+												<tr>
+													<td>a, preffered units</td>
+													<td><input type="text" name="a_in" id= "a_in" value="" placeholder="a" /></td>
+													<td>Omega, deg (optional)</td>
+													<td><input type="text" name="Omega_in" id= "Omega_in" value="" placeholder="Omega" /></td>
+												</tr>
+												<tr>
+													<td>e, [0,1)</td>
+													<td><input type="text" name="e_in" id="e_in" value="" placeholder="e" /></td>
+													<td>omga, deg (optional)</td>
+													<td><input type="text" name="omega_in" id="omega_in" value="" placeholder="omega" /></td>
+												</tr>
+												<tr>
+													<td>i, degrees</td>
+													<td><input type="text" name="i_in" id="i_in" value="" placeholder="i" /></td>
+													<td>f (true anomaly), degrees (optional)</td>
+													<td><input type="text" name="f_in" id="f_in" value="" placeholder="f" /></td>
+												</tr>
+												<tr>
+													<td><input type="button"  name="go" value="Plot Orbit" onclick="return plot_orbits()" class="plotter" /></td>
+											</tbody>
+										</table>
+									</div>
+									<div id="tester" style="width:600px;height:600px;"></div> <!-- Made box for plot -->
+								<script type="text/javascript" src="plot_test.js"></script>
+							</section>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
