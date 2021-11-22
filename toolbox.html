@@ -33,6 +33,38 @@
 						<!-- Content -->
 							<section id="content" class="main">
 								<!-- <span class="image main"><img src="images/pic04.jpg" alt="" /></span> -->
+								<h2>Orbital Plotter</h2>
+								<p></p>
+								<form onsubmit="return plot_orbits()" name="plotter" action="">
+									<div class="table-wrapper">
+										<table>
+											<tbody>
+												<tr>
+													<td>a, preffered units</td>
+													<td><input type="text" name="a_in" id= "a_in" value="" placeholder="a" /></td>
+													<td>Omega, deg (optional)</td>
+													<td><input type="text" name="Omega_in" id= "Omega_in" value="" placeholder="Omega" /></td>
+												</tr>
+												<tr>
+													<td>e, [0,1)</td>
+													<td><input type="text" name="e_in" id="e_in" value="" placeholder="e" /></td>
+													<td>omga, deg (optional)</td>
+													<td><input type="text" name="omega_in" id="omega_in" value="" placeholder="omega" /></td>
+												</tr>
+												<tr>
+													<td>i, degrees</td>
+													<td><input type="text" name="i_in" id="i_in" value="" placeholder="i" /></td>
+													<td>f (true anomaly), degrees (optional)</td>
+													<td><input type="text" name="f_in" id="f_in" value="" placeholder="f" /></td>
+												</tr>
+												<tr>
+													<td><input type="button"  name="go" value="Plot Orbit" onclick="return plot_orbits()" class="plotter" /></td>
+											</tbody>
+										</table>
+									</div>
+									<div id="tester" style="width:600px;height:600px;"></div> <!-- Made box for plot -->
+								<script type="text/javascript" src="plot_test.js"></script>
+							
 								<h2>Orbital Period Calculator</h2>
 								<script>
 									function calculate() {
@@ -110,37 +142,6 @@
 									</table>
 								</div>
 								<p>Adapted from <a href=https://calculator.academy/author/calculatoracademy> Calculator Academy </a></p>
-								<h2>Orbital Plotter</h2>
-								<p></p>
-								<form onsubmit="return plot_orbits()" name="plotter" action="">
-									<div class="table-wrapper">
-										<table>
-											<tbody>
-												<tr>
-													<td>a, preffered units</td>
-													<td><input type="text" name="a_in" id= "a_in" value="" placeholder="a" /></td>
-													<td>Omega, deg (optional)</td>
-													<td><input type="text" name="Omega_in" id= "Omega_in" value="" placeholder="Omega" /></td>
-												</tr>
-												<tr>
-													<td>e, [0,1)</td>
-													<td><input type="text" name="e_in" id="e_in" value="" placeholder="e" /></td>
-													<td>omga, deg (optional)</td>
-													<td><input type="text" name="omega_in" id="omega_in" value="" placeholder="omega" /></td>
-												</tr>
-												<tr>
-													<td>i, degrees</td>
-													<td><input type="text" name="i_in" id="i_in" value="" placeholder="i" /></td>
-													<td>f (true anomaly), degrees (optional)</td>
-													<td><input type="text" name="f_in" id="f_in" value="" placeholder="f" /></td>
-												</tr>
-												<tr>
-													<td><input type="button"  name="go" value="Plot Orbit" onclick="return plot_orbits()" class="plotter" /></td>
-											</tbody>
-										</table>
-									</div>
-									<div id="tester" style="width:600px;height:600px;"></div> <!-- Made box for plot -->
-								<script type="text/javascript" src="plot_test.js"></script>
 							</section>
 				</div>
 
